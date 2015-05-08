@@ -25,18 +25,8 @@
   <body ng-app="pokemon-score">
 
     <ion-pane ng-controller="cards">
-      <ion-header-bar align-title="left" class="bar-stable bar-assertive">
+      <ion-header-bar class="bar-stable bar-assertive">
         <h1 class="title">Placar Pokemon</h1>
-        <div class="buttons">
-          <button class="button" ng-click="openNewPokemon()">
-            <i class="icon ion-plus-round"></i>
-            Adicionar Pokemon
-          </button>
-          <button class="button" ng-click="clearPokemon()">
-            <i class="icon ion-power"></i>
-            Resetar
-          </button>
-        </div>
       </ion-header-bar>
 
       <ion-content>
@@ -62,6 +52,17 @@
         </div>
 
       </ion-content>
+
+      <div class="bar bar-footer bar-assertive">
+        <button class="button" ng-click="openNewPokemon()">
+          <i class="icon ion-plus-round"></i>
+          Adicionar Pokemon
+        </button>
+        <button class="button" ng-click="clearPokemon()">
+          <i class="icon ion-power"></i>
+          Resetar
+        </button>
+      </div>
     </ion-pane>
 
     <script id="new-pokemon.html" type="text/ng-template">
