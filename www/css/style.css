@@ -1,0 +1,7 @@
+/* Empty. Add your own CSS if you like */
+.pokemon-card {
+  line-height: 47px;
+}
+.pokemon-card .status {
+  float: right;
+}

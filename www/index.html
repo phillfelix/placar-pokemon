@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+  </head>
+  <body ng-app="pokemon-score">
+
+    <ion-pane ng-controller="cards">
+      <ion-header-bar align-title="left" class="bar-stable bar-assertive">
+        <h1 class="title">Placar Pokemon</h1>
+        <div class="buttons">
+          <button class="button" ng-click="openNewPokemon()">
+            <i class="icon ion-plus-round"></i>
+            Adicionar Pokemon
+          </button>
+          <button class="button" ng-click="clearPokemon()">
+            <i class="icon ion-power"></i>
+            Resetar
+          </button>
+        </div>
+      </ion-header-bar>
+
+      <ion-content>
+
+        <div class="list card">
+
+          <div href="#" class="item pokemon-card" ng-repeat="pokemon in pokemonList" ng-click="openModal(pokemon)">
+            {{pokemon.name}}
+            <div class="buttons status">
+              <span class="ps">{{pokemon.ps}}</span>
+              <button class="button button-clear button-assertive" ng-click="damage(pokemon)"><i class="icon ion-heart-broken"></i></button>
+              <button class="button button-clear button-balanced" ng-click="heal(pokemon)"><i class="icon ion-heart"></i></button>
+            </div>
+          </div>
+
+        </div>
+
+      </ion-content>
+    </ion-pane>
+
+    <script id="new-pokemon.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="bar-stable bar-assertive">
+          <h1 class="title">Adicionar Pokemon</h1>
+        </ion-header-bar>
+        <ion-content>
+          <form ng-submit="addPokemon(data)" class="padding">
+            <div class="list">
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Nome</span>
+                <input type="text" placeholder="Nome" ng-model="data.name">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">PS</span>
+                <input type="number" step="10" placeholder="PS" ng-model="data.ps">
+              </label>
+            </div>
+            <div class="buttons">
+              <button class="button button-block button-assertive">Adicionar</div>
+            </div>
+          </form>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+  </body>
+</html>
