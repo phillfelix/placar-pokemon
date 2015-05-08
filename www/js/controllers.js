@@ -51,6 +51,9 @@ angular.module('pokemon-score.controllers', [])
 
     $scope.damage = function(pokemon) {
       pokemon.ps = pokemon.ps - 10;
+      if (pokemon.ps == 0) {
+        $scope.toggleFainted(pokemon);
+      }
     };
 
     $scope.heal = function(pokemon) {
@@ -59,27 +62,26 @@ angular.module('pokemon-score.controllers', [])
 
     $scope.toggleConfused = function(pokemon) {
       pokemon.confused = !pokemon.confused;
-      console.log(pokemon.confused);
     };
 
     $scope.toggleParalized = function(pokemon) {
       pokemon.paralized = !pokemon.paralized;
-      console.log(pokemon.paralized);
     };
 
     $scope.toggleAsleep = function(pokemon) {
       pokemon.asleep = !pokemon.asleep;
-      console.log(pokemon.asleep);
     };
 
     $scope.togglePoisoned = function(pokemon) {
       pokemon.poisoned = !pokemon.poisoned;
-      console.log(pokemon.poisoned);
     };
 
     $scope.toggleBurnt = function(pokemon) {
       pokemon.burnt = !pokemon.burnt;
-      console.log(pokemon.burnt);
     };
+
+    $scope.toggleFainted = function(pokemon) {
+      pokemon.fainted = !pokemon.fainted;
+    }
 
   });

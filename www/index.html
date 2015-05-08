@@ -43,19 +43,19 @@
 
         <div class="list card">
 
-          <div href="#" class="item pokemon-card" ng-repeat="pokemon in pokemonList" ng-click="openModal(pokemon)">
+          <div href="#" class="item pokemon-card {{ pokemon.fainted ? 'pokemon-fainted' : '' }}" ng-repeat="pokemon in pokemonList">
             <span class="pokemon-name">{{pokemon.name}}</span>
             <div class="health">
               <span class="ps">{{pokemon.ps}}</span>
-              <button class="button button-clear button-assertive" ng-click="damage(pokemon)"><i class="icon ion-heart-broken"></i></button>
-              <button class="button button-clear button-balanced" ng-click="heal(pokemon)"><i class="icon ion-heart"></i></button>
+              <button class="button button-clear button-assertive" ng-click="pokemon.fainted || damage(pokemon)"><i class="icon ion-heart-broken"></i></button>
+              <button class="button button-clear button-balanced" ng-click="pokemon.fainted || heal(pokemon)"><i class="icon ion-heart"></i></button>
             </div>
             <div class="status">
-              <button class="button button-clear {{ pokemon.confused ? 'button-royal' : '' }}" ng-click="toggleConfused(pokemon)"><i class="icon ion-help"></i></button>
-              <button class="button button-clear {{ pokemon.paralized ? 'button-energized' : '' }}" ng-click="toggleParalized(pokemon)"><i class="icon ion-ios-bolt"></i></button>
-              <button class="button button-clear {{ pokemon.asleep ? 'button-dark' : '' }}" ng-click="toggleAsleep(pokemon)"><i class="icon ion-ios-moon"></i></button>
-              <button class="button button-clear {{ pokemon.poisoned ? 'button-balanced' : '' }}" ng-click="togglePoisoned(pokemon)"><i class="icon ion-erlenmeyer-flask"></i></button>
-              <button class="button button-clear {{ pokemon.burnt ? 'button-assertive' : '' }}" ng-click="toggleBurnt(pokemon)"><i class="icon ion-fireball"></i></button>
+              <button class="button button-clear {{ pokemon.confused ? 'button-royal' : '' }}" ng-click="pokemon.fainted || toggleConfused(pokemon)"><i class="icon ion-help"></i></button>
+              <button class="button button-clear {{ pokemon.paralized ? 'button-energized' : '' }}" ng-click="pokemon.fainted || toggleParalized(pokemon)"><i class="icon ion-ios-bolt"></i></button>
+              <button class="button button-clear {{ pokemon.asleep ? 'button-dark' : '' }}" ng-click="pokemon.fainted || toggleAsleep(pokemon)"><i class="icon ion-ios-moon"></i></button>
+              <button class="button button-clear {{ pokemon.poisoned ? 'button-balanced' : '' }}" ng-click="pokemon.fainted || togglePoisoned(pokemon)"><i class="icon ion-erlenmeyer-flask"></i></button>
+              <button class="button button-clear {{ pokemon.burnt ? 'button-assertive' : '' }}" ng-click="pokemon.fainted || toggleBurnt(pokemon)"><i class="icon ion-fireball"></i></button>
             </div>
           </div>
 

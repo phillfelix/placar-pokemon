@@ -5,3 +5,6 @@
 .pokemon-card .health {
   float: right;
 }
+.pokemon-fainted {
+  opacity: 0.7;
+}
