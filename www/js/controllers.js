@@ -15,6 +15,25 @@ angular.module('pokemon-score.controllers', [])
     $scope.closeNewPokemon = function() {
       $scope.newPokemonModal.hide();
     };
+
+    $ionicModal.fromTemplateUrl('evolve-pokemon.html', {
+      scope: $scope,
+      animation: 'slide-in-right'
+    }).then(function(modal) {
+      $scope.evolvePokemonModal = modal;
+    });
+    $scope.openEvolvePokemon = function(pokemon) {
+      $scope.evolvingPokemon = pokemon;
+      $scope.evolution = {
+        name: pokemon.name,
+        psMax: pokemon.psMax
+      };
+      $scope.evolvePokemonModal.show();
+    };
+    $scope.closeEvolvePokemon = function() {
+      $scope.evolvePokemonModal.hide();
+    };
+
     //Cleanup the modal when we're done with it!
     $scope.$on('$destroy', function() {
       $scope.newPokemonModal.remove();
@@ -29,7 +48,6 @@ angular.module('pokemon-score.controllers', [])
     });
 
     $scope.addPokemon = function(data) {
-      console.log(data);
       $scope.pokemonList.push({
         name: data.name,
         psMax: data.ps,
@@ -82,6 +100,16 @@ angular.module('pokemon-score.controllers', [])
 
     $scope.toggleFainted = function(pokemon) {
       pokemon.fainted = !pokemon.fainted;
-    }
+    };
+
+    $scope.evolve = function(evolution) {
+      var damageTaken = $scope.evolvingPokemon.psMax - $scope.evolvingPokemon.ps;
+
+      $scope.evolvingPokemon.name = evolution.name;
+      $scope.evolvingPokemon.psMax = evolution.psMax;
+      $scope.evolvingPokemon.ps = evolution.psMax - damageTaken;
+
+      $scope.evolvePokemonModal.hide();
+    };
 
   });
