@@ -2,6 +2,6 @@
 .pokemon-card {
   line-height: 47px;
 }
-.pokemon-card .status {
+.pokemon-card .health {
   float: right;
 }
