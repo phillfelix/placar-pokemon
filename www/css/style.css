@@ -8,3 +8,9 @@
 .pokemon-fainted {
   opacity: 0.7;
 }
+.wellcome {
+  text-align: center;
+}
+.wellcome img {
+  max-width: 90%;
+}

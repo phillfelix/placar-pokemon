@@ -31,7 +31,11 @@
 
       <ion-content>
 
-        <div class="list card">
+        <div class="wellcome" ng-show="pokemonList.length == 0">
+          <img src="img/pokeball.png">
+        </div>
+
+        <div class="list card" ng-show="pokemonList.length > 0">
 
           <div href="#" class="item pokemon-card {{ pokemon.fainted ? 'pokemon-fainted' : '' }}" ng-repeat="pokemon in pokemonList">
             <span class="pokemon-name">{{pokemon.name}}</span>
